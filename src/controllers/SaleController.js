@@ -12,11 +12,16 @@ module.exports = {
       if(!user)
         return res.status(409).json({ message : "Usuário não existe"})
       
+      const { credit } = user
+      if(credit - price < 0)
+        return res.status(400).json({ message : "Crédito insuficiente"})
+
       const card = await Card.findByPk(card_id)
       if(!card)
         return res.status(409).json({ message : "Cartão não existe"})
       
       const sale = await Sale.create({ card_id, booking_id, date, type, price, })
+      user.addDebit(price)
       return res.json({ sale })
     } catch (error) {
       console.log(error)
@@ -27,23 +32,16 @@ module.exports = {
     const { user_id } = req.params
 
     try {
-      const user = await User.findByPk(
-        user_id,
-        {
+      const cards = await Card.findAll({
+          where: { user_id },
           include: {
-            association : "cards"
+            association : "sales"
           }
-        }
-      )
-      
-      if(!user)
-        return res.status(409).json({ message : "Usuário não existe"})
-    
-      const { cards } = user
-      if(!cards)
-        return res.status(409).json({ message : "Usuário não possui cartões"})
-      
+        })
 
+      if(!cards)
+        return res.status(409).json({ message : "Usuário não possui cartões cadastrados"})
+      
       return res.json({ cards })
     } catch (error) {
       console.log(error)

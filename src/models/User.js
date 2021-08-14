@@ -4,6 +4,18 @@ class User extends Model {
   static associate(models){
     this.hasMany(models.Card, { foreignKey: 'user_id', as: 'cards' })
   }
+  async addCredit(incomingCredit){
+    this.credit += incomingCredit
+    await User.update({
+      credit: this.credit,
+    }, { where: { id: this.id } })
+  }
+  async addDebit(debit){
+    this.credit -= debit
+    await User.update({
+      credit: this.credit,
+    }, { where: { id: this.id } })
+  }
   static init(connection){
     super.init({
       first_name:  {

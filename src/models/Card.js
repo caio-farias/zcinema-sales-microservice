@@ -10,7 +10,7 @@ class Card extends Model {
     })
     this.hasMany(models.Sale, { 
       foreignKey: 'card_id', 
-      as: 'sale-card',
+      as: 'sales',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     })
