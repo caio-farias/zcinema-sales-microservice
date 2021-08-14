@@ -2,12 +2,6 @@ const { Model, DataTypes } = require('sequelize')
 
 class Sale extends Model {
   static associate(models){
-    this.belongsTo(models.User, { 
-      foreignKey: 'user_id', 
-      as: 'user-sales',
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    })
     this.belongsTo(models.Card, { 
       foreignKey: 'card_id', 
       as: 'user-cards',
@@ -31,8 +25,8 @@ class Sale extends Model {
         type: DataTypes.NUMBER,
         allowNull: false,
       },
-      booking_info: {
-        type: DataTypes.JSON,
+      booking_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       }
     }

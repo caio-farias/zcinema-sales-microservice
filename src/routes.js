@@ -11,7 +11,7 @@ routes.delete('/sales/users/:id', UserController.deleteUser)
 routes.post('/sales/cards/:user_id', CardController.createCard)
 routes.get('/sales/cards/:user_id', CardController.getAllUserCards)
 
-routes.post('/sales/:card_id/:booking_id', SaleController.createSale)
+routes.post('/sales/:user_id/:card_id/:booking_id', SaleController.createSale)
 routes.get('/sales/:user_id/', SaleController.getUserSales)
 
 module.exports = routes

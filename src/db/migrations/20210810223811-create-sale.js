@@ -19,6 +19,10 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
         },
+        booking_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
         date: {
           type: Sequelize.DATEONLY,
           allowNull: false,
@@ -29,10 +33,6 @@ module.exports = {
         },
         price:{
           type: Sequelize.STRING,
-          allowNull: false,
-        },
-        booking_info: {
-          type: Sequelize.JSON,
           allowNull: false,
         },
         created_at: {

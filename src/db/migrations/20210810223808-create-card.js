@@ -31,10 +31,6 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        transactions_history: {
-          type: Sequelize.JSON,
-          allowNull: false,
-        },
         created_at: {
           type: Sequelize.DATE,
           allowNull: false

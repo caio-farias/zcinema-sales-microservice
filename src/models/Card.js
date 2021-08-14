@@ -9,7 +9,7 @@ class Card extends Model {
       onDelete: 'CASCADE'
     })
     this.hasMany(models.Sale, { 
-      foreignKey: 'sale_id', 
+      foreignKey: 'card_id', 
       as: 'sale-card',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
@@ -31,10 +31,6 @@ class Card extends Model {
         allowNull: false,
         unique: true,
       },
-      transactions_history: {
-        type: DataTypes.JSON,
-        allowNull: false,
-      }
     }
     ,{
       modelName: 'Card',

@@ -11,7 +11,7 @@ module.exports = {
     if(isSameCard)
       return res.status(409).json({ message: "Usuário já possui este cartão" })
     
-    const transactions_history = {}
+    const transactions_history = []
     
     const card  = await Card.create({
       user_id,
