@@ -24,18 +24,10 @@ module.exports = {
       return res.status(400).json({ message: "Ocorreu um erro, tente novamente." })
     }
   },
-  async getAllUsers(req, res){
-    try {
-      const users = await User.findAll()
-      return res.json(users)
-    } catch (error) {
-      return res.status(400).json({ message: "Ocorreu um erro, tente novamente." })
-    }
-  },
   async getUser(req, res){
     const { id } = req.params
     try {
-      const user = await User.findOne({ where: { id: id } })
+      const user = await User.findByPk(id)
       if(!user)
         return res.status(400).json({ message: "Usuário inexistente" })
         

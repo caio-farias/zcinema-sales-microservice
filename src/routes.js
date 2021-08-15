@@ -6,6 +6,7 @@ const SaleController = require('./controllers/SaleController')
 const CreditController = require('./controllers/CreditController')
 
 routes.post('/sales/users', UserController.createUser)
+routes.get('/sales/users/:id', UserController.getUser)
 routes.patch('/sales/users/:id', UserController.updateUser)
 routes.delete('/sales/users/:id', UserController.deleteUser)
 

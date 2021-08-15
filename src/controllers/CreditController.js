@@ -1,12 +1,13 @@
 const Credit = require('../models/Credit')
 const Card = require('../models/Card')
 const User = require('../models/User')
-
+const moment = require('moment')
 
 module.exports = {
   async createCredit(req, res){
     const { card_id } = req.params
-    const { date, value } = req.body
+    const { value } = req.body
+    const date = moment().format("YYYY-MM-DD")
     
     const card = await Card.findByPk(card_id)
     

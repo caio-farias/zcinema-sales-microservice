@@ -1,11 +1,14 @@
 const User = require('../models/User')
 const Sale = require('../models/Sale')
 const Card = require('../models/Card')
+const moment = require('moment')
 
 module.exports = {
   async createSale(req, res){
     const { user_id, card_id, booking_id } = req.params
-    const { date, type, price } = req.body
+    const { price } = req.body
+    const type = "CRÉDITO EM CONTA"
+    const date = moment().format("YYYY-MM-DD")
 
     try {
       const user = await User.findByPk(user_id)
