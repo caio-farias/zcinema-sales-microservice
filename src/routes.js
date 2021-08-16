@@ -12,6 +12,7 @@ routes.delete('/sales/users/:id', UserController.deleteUser)
 
 routes.post('/sales/cards/:user_id', CardController.createCard)
 routes.get('/sales/cards/:user_id', CardController.getAllUserCards)
+routes.get('/sales/cards/:user_id/:card_id', CardController.getCard)
 
 routes.post('/sales/credit/:card_id', CreditController.createCredit)
 
